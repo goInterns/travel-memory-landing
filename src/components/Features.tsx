@@ -1,10 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  MapPin,
-  Compass,
-  Camera,
+import { 
+  Compass, 
+  Camera, 
   Map,
   Layers,
   Zap,

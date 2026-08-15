@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { MapPin, Compass, Camera, Map, Menu, X, Sparkles } from 'lucide-react'
+import { MapPin, Compass, Camera, Menu, X, Sparkles } from 'lucide-react'
 
 const navItems = [
   { href: '#journey', label: 'The Journey' },

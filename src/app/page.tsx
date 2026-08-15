@@ -1,25 +1,25 @@
-'use client'
-
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Journey from '@/components/Journey'
+import ProductVisualization from '@/components/ProductVisualization'
 import Features from '@/components/Features'
 import HowItWorks from '@/components/HowItWorks'
+import SocialProof from '@/components/SocialProof'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <div className="font-sans text-foreground bg-background min-h-screen">
+    <>
       <Navbar />
-      <main id="main-content">
+      <main className="relative bg-background min-h-screen">
         <Hero />
-        <Journey />
+        <ProductVisualization />
         <Features />
         <HowItWorks />
+        <SocialProof />
         <CTA />
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
