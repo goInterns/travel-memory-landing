@@ -1,141 +1,45 @@
 import Link from 'next/link'
-import { Sparkles, MapPin, Mail } from 'lucide-react'
-
-const footerLinks = {
-  product: [
-    { label: 'Features', href: '#features' },
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'The Journey', href: '#how-it-works' },
-  ],
-  company: [
-    { label: 'About', href: '#about' },
-    { label: 'Careers', href: '#careers' },
-    { label: 'Blog', href: '#blog' },
-    { label: 'Press', href: '#press' },
-  ],
-  resources: [
-    { label: 'Documentation', href: '#docs' },
-    { label: 'Support', href: '#support' },
-    { label: 'Contact', href: '#cta' },
-  ],
-  legal: [
-    { label: 'Privacy Policy', href: '#privacy' },
-    { label: 'Terms of Service', href: '#terms' },
-    { label: 'Cookie Policy', href: '#cookies' },
-  ],
-}
-
-const socialLinks = [
-  { label: 'Website', href: 'https://travelmemory.app', icon: 'globe' },
-  { label: 'Email', href: 'mailto:hello@travelmemory.app', icon: 'mail' },
-]
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
-
+  const year = new Date().getFullYear()
   return (
-    <footer className="relative pt-16 lg:pt-24 pb-12 border-t border-sand-800/50">
-      <div className="w-[1280px] max-w-full mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 font-display font-semibold text-xl text-foreground mb-4" aria-label="Travel Memory Home">
-              <div 
-                className="w-8 h-8 flex items-center justify-center rounded-lg"
-                style={{ background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)' }}
-              >
-                <Sparkles size={18} className="text-sand-950" />
-              </div>
+    <footer className="relative border-t border-[var(--color-border)] py-14 lg:py-16" role="contentinfo">
+      <div className="mx-auto max-w-[1160px] px-5 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
+          <div className="max-w-sm">
+            <Link href="/" className="flex items-center gap-2.5 font-display font-semibold text-lg text-fg mb-4" aria-label="Travel Memory home">
+              <span className="grid place-items-center w-8 h-8 rounded-lg" style={{ background: 'var(--color-amber-500)' }} aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M9 1.5c-3 0-5.2 2.2-5.2 5 0 3.6 5.2 9 5.2 9s5.2-5.4 5.2-9c0-2.8-2.2-5-5.2-5Z" stroke="#07090c" strokeWidth="1.6" strokeLinejoin="round" />
+                  <circle cx="9" cy="6.4" r="1.7" fill="#07090c" />
+                </svg>
+              </span>
               <span>Travel Memory</span>
             </Link>
-            <p className="text-body-sm text-sand-500 mb-4 max-w-[200px]">
-              Discover, plan, experience, and remember every journey.
+            <p className="text-body-sm text-fg-muted leading-relaxed">
+              Discover, plan, experience, and remember every journey — on a real, living 3D map.
             </p>
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center text-sand-400 hover:text-amber-500 hover:bg-sand-800/50 transition-all duration-200"
-                  aria-label={social.label}
-                  target={social.href.startsWith('http') ? '_blank' : undefined}
-                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {social.icon === 'globe' ? <MapPin size={18} /> : <Mail size={18} />}
-                </Link>
-              ))}
+          </div>
+          <div className="flex gap-14 sm:gap-20">
+            <div>
+              <h3 className="text-label text-fg-subtle mb-4">Product</h3>
+              <ul className="space-y-3">
+                <li><Link href="#journey" className="text-body-sm text-fg-muted hover:text-fg transition-colors">The journey</Link></li>
+                <li><Link href="#phases" className="text-body-sm text-fg-muted hover:text-fg transition-colors">How it works</Link></li>
+                <li><Link href="#trust" className="text-body-sm text-fg-muted hover:text-fg transition-colors">Privacy</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-label text-fg-subtle mb-4">Company</h3>
+              <ul className="space-y-3">
+                <li><a href="mailto:hello@travelmemory.app" className="text-body-sm text-fg-muted hover:text-fg transition-colors">Contact</a></li>
+              </ul>
             </div>
           </div>
-
-          {/* Links */}
-          <div>
-            <h4 className="text-heading-sm text-foreground mb-4">Product</h4>
-            <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-body-sm text-sand-400 hover:text-foreground transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-heading-sm text-foreground mb-4">Company</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-body-sm text-sand-400 hover:text-foreground transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-heading-sm text-foreground mb-4">Resources</h4>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-body-sm text-sand-400 hover:text-foreground transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-heading-sm text-foreground mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-body-sm text-sand-400 hover:text-foreground transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
-
-        {/* Copyright */}
-        <div className="pt-8 border-t border-sand-800/50 text-center text-body-sm text-sand-500">
-          <p>© {currentYear} Travel Memory. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-body-sm text-fg-subtle">© {year} Travel Memory. All rights reserved.</p>
+          <p className="text-body-sm text-fg-subtle">Map imagery © Esri · Terrain Mapzen/AWS · Roads © OpenStreetMap</p>
         </div>
       </div>
     </footer>

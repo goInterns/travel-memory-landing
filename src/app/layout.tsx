@@ -1,67 +1,42 @@
-import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
+import type { Metadata, Viewport } from 'next'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Travel Memory — Discover, Plan, Experience, Remember",
-  description: "Turn your travels into living memories. Discover hidden gems, plan intelligent routes, navigate with context, and relive every journey in cinematic 3D.",
-  keywords: "travel, journey, itinerary, offline maps, 3d replay, travel journal, GPX, Mapbox",
-  authors: [{ name: "Travel Memory" }],
+  title: 'Travel Memory — Your journeys, on a living 3D map',
+  description:
+    'Not photos in a cloud. Travel Memory turns every trip into a real, interactive 3D map — discover the stops, plan the route, experience the drive, and relive it forever. Delhi to Triund and every moment between.',
+  keywords: ['travel', '3D map', 'journey', 'itinerary', 'offline maps', 'travel journal', 'route planning', 'OpenStreetMap'],
+  authors: [{ name: 'Travel Memory' }],
   openGraph: {
-    title: "Travel Memory — Discover, Plan, Experience, Remember",
-    description: "Turn your travels into living memories.",
-    type: "website",
-    locale: "en-US",
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://travel-memory-landing.vercel.app',
+    title: 'Travel Memory — Your journeys, on a living 3D map',
+    description: 'Every journey becomes a living map.',
+    siteName: 'Travel Memory',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://travelmemory.app",
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Travel Memory — Your journeys, on a living 3D map',
+    description: 'Every journey becomes a living map.',
   },
 }
 
 export const viewport: Viewport = {
-  width: "device-width",
+  themeColor: '#07090c',
+  width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0c0a09" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
-  ],
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body
-        className="bg-background text-foreground"
-        style={{
-          background: 'radial-gradient(circle at top right, rgba(245,158,11,0.03) 0%, transparent 50%), radial-gradient(circle at bottom left, rgba(14,165,233,0.03) 0%, transparent 50%), #0c0a09',
-        }}
-      >
-        <div id="noise-overlay" className="fixed inset-0 pointer-events-none opacity-2" style={{ 
-          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")',
-          backgroundSize: '300px',
-          mixBlendMode: 'overlay',
-        }} />
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-amber-500 focus:text-ink">
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

@@ -1,25 +1,23 @@
 import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
-import ProductVisualization from '@/components/ProductVisualization'
-import Features from '@/components/Features'
-import HowItWorks from '@/components/HowItWorks'
-import SocialProof from '@/components/SocialProof'
-import CTA from '@/components/CTA'
+import Intro from '@/components/Intro'
+import MapStage from '@/components/MapStage'
+import Phases from '@/components/Phases'
+import Trust from '@/components/Trust'
+import Waitlist from '@/components/Waitlist'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <>
+    <div className="font-sans text-foreground bg-background min-h-screen">
       <Navbar />
-      <main className="relative bg-background min-h-screen">
-        <Hero />
-        <ProductVisualization />
-        <Features />
-        <HowItWorks />
-        <SocialProof />
-        <CTA />
+      <main id="main-content">
+        <Intro />
+        <MapStage />
+        <Phases />
+        <Trust />
+        <Waitlist />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
