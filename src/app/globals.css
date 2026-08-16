@@ -25,6 +25,8 @@
   --color-amber-400: #fbbf24;
   --color-amber-500: #f59e0b;
   --color-amber-600: #d97706;
+  /* Accessible amber for TEXT on light paper (AA on --color-paper) */
+  --color-amber-ink: #a3560a;
 
   /* Sky — discovery, markers, waypoints */
   --color-sky-300: #7dd3fc;
@@ -33,6 +35,16 @@
 
   /* Summit accent */
   --color-rose-300: #fda4af;
+
+  /* Light editorial world — warm paper + near-black ink.
+     Chapters before/after the map live here; the map itself stays dark. */
+  --color-paper: #f4efe7;
+  --color-paper-2: #ece5da;
+  --color-ink-text: #17140f;
+  --color-ink-text-muted: #52493c;
+  --color-ink-text-subtle: #857a68;
+  --color-paper-border: rgba(23, 20, 15, 0.12);
+  --color-paper-border-strong: rgba(23, 20, 15, 0.22);
 
   --color-surface: #0d1116;
   --color-background: #07090c;
@@ -135,6 +147,16 @@ p { line-height: var(--leading-body); }
   transition: background .2s ease, border-color .2s ease;
 }
 .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
+
+/* Light-world button variants (editorial paper sections) */
+.btn-ghost-dark {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  font-weight: 500; border-radius: 999px;
+  background: transparent; color: var(--color-ink-text);
+  border: 1px solid var(--color-paper-border-strong);
+  transition: background .2s ease, border-color .2s ease;
+}
+.btn-ghost-dark:hover { background: rgba(23,20,15,0.05); border-color: rgba(23,20,15,0.4); }
 
 /* MapLibre chrome tuned to the dark theme */
 .maplibregl-ctrl-attrib {

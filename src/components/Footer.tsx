@@ -25,8 +25,8 @@ export default function Footer() {
               <h3 className="text-label text-fg-subtle mb-4">Product</h3>
               <ul className="space-y-3">
                 <li><Link href="#journey" className="text-body-sm text-fg-muted hover:text-fg transition-colors">The journey</Link></li>
-                <li><Link href="#phases" className="text-body-sm text-fg-muted hover:text-fg transition-colors">How it works</Link></li>
-                <li><Link href="#trust" className="text-body-sm text-fg-muted hover:text-fg transition-colors">Privacy</Link></li>
+                <li><Link href="#remember" className="text-body-sm text-fg-muted hover:text-fg transition-colors">Memories</Link></li>
+                <li><Link href="#waitlist" className="text-body-sm text-fg-muted hover:text-fg transition-colors">Early access</Link></li>
               </ul>
             </div>
             <div>

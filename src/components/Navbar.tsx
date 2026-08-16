@@ -9,13 +9,13 @@ const EASE = [0.16, 1, 0.3, 1] as const
 
 const navItems = [
   { href: '#journey', label: 'The journey' },
-  { href: '#phases', label: 'How it works' },
-  { href: '#trust', label: 'Privacy' },
+  { href: '#remember', label: 'Memories' },
+  { href: '#waitlist', label: 'Early access' },
 ]
 
-function Logo() {
+function Logo({ dark }: { dark: boolean }) {
   return (
-    <Link href="/" className="flex items-center gap-2.5 font-display font-semibold text-lg text-fg" aria-label="Travel Memory home">
+    <Link href="/" className="flex items-center gap-2.5 font-display font-semibold text-lg" style={{ color: dark ? 'var(--color-ink-text)' : 'var(--color-fg)' }} aria-label="Travel Memory home">
       <span className="grid place-items-center w-8 h-8 rounded-lg" style={{ background: 'var(--color-amber-500)' }} aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
           <path d="M9 1.5c-3 0-5.2 2.2-5.2 5 0 3.6 5.2 9 5.2 9s5.2-5.4 5.2-9c0-2.8-2.2-5-5.2-5Z" stroke="#07090c" strokeWidth="1.6" strokeLinejoin="round" />
@@ -43,6 +43,10 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [open])
 
+  // Nav floats over the LIGHT hero at top (dark text), switches to a dark
+  // blur bar once scrolled (light text).
+  const dark = !scrolled
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -50,7 +54,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: EASE }}
       className="fixed top-0 inset-x-0 z-50 transition-colors duration-300"
       style={{
-        background: scrolled ? 'rgba(7,9,12,0.7)' : 'transparent',
+        background: scrolled ? 'rgba(7,9,12,0.72)' : 'transparent',
         backdropFilter: scrolled ? 'blur(14px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
@@ -58,10 +62,15 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-[1160px] px-5 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
-          <Logo />
+          <Logo dark={dark} />
           <nav className="hidden lg:flex items-center gap-9" aria-label="Primary">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="text-body-sm text-fg-muted hover:text-fg transition-colors">
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-body-sm transition-colors hover:opacity-100"
+                style={{ color: dark ? 'var(--color-ink-text-muted)' : 'var(--color-fg-muted)' }}
+              >
                 {item.label}
               </Link>
             ))}
@@ -72,7 +81,8 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden grid place-items-center w-11 h-11 -mr-2 text-fg"
+            className="lg:hidden grid place-items-center w-11 h-11 -mr-2"
+            style={{ color: dark ? 'var(--color-ink-text)' : 'var(--color-fg)' }}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
