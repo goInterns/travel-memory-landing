@@ -171,7 +171,7 @@ export default function MapStage() {
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                'linear-gradient(180deg, rgba(7,9,12,0.72) 0%, rgba(7,9,12,0.15) 30%, rgba(7,9,12,0.15) 62%, rgba(7,9,12,0.82) 100%)',
+                'linear-gradient(180deg, rgba(7,9,12,0.35) 0%, rgba(7,9,12,0) 22%, rgba(7,9,12,0) 60%, rgba(7,9,12,0.55) 88%, rgba(7,9,12,0.8) 100%)',
             }}
           />
 

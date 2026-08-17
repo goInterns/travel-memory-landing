@@ -18,12 +18,12 @@ export interface Stop {
 }
 
 export const STOPS: Stop[] = [
-  { id: 'delhi', name: 'Delhi', note: 'Where it begins \u2014 210m, a pre-dawn start.', day: 'Day 1', coord: [77.1025, 28.7041], zoom: 10.5, pitch: 55, bearing: 20, kind: 'city' },
-  { id: 'murthal', name: 'Murthal', note: 'The paratha stop everyone pulls over for.', day: 'Day 1', coord: [77.0708, 29.0222], zoom: 12, pitch: 55, bearing: -15, kind: 'food' },
-  { id: 'chandigarh', name: 'Chandigarh', note: 'A night in the grid city.', day: 'Day 2', coord: [76.7794, 30.7333], zoom: 11, pitch: 50, bearing: 30, kind: 'city' },
-  { id: 'dharamshala', name: 'Dharamshala', note: 'The air changes. Mountains ahead.', day: 'Day 3', coord: [76.3234, 32.219], zoom: 11.5, pitch: 62, bearing: -25, kind: 'mountain' },
-  { id: 'mcleodganj', name: 'McLeod Ganj', note: 'Monastery bells and momos.', day: 'Day 4', coord: [76.3388, 32.2425], zoom: 12.5, pitch: 64, bearing: 15, kind: 'mountain' },
-  { id: 'triund', name: 'Triund', note: 'Sunrise over the Dhauladhar. The summit.', day: 'Day 5', coord: [76.3667, 32.2741], zoom: 13, pitch: 70, bearing: -40, kind: 'summit' },
+  { id: 'delhi', name: 'Delhi', note: 'Where it begins \u2014 210m, a pre-dawn start.', day: 'Day 1', coord: [77.1025, 28.7041], zoom: 10.8, pitch: 48, bearing: 22, kind: 'city' },
+  { id: 'murthal', name: 'Murthal', note: 'The paratha stop everyone pulls over for.', day: 'Day 1', coord: [77.0708, 29.0222], zoom: 12, pitch: 50, bearing: -16, kind: 'food' },
+  { id: 'chandigarh', name: 'Chandigarh', note: 'A night in the grid city.', day: 'Day 2', coord: [76.7794, 30.7333], zoom: 11.3, pitch: 48, bearing: 30, kind: 'city' },
+  { id: 'dharamshala', name: 'Dharamshala', note: 'The air changes. Mountains ahead.', day: 'Day 3', coord: [76.3234, 32.219], zoom: 12, pitch: 56, bearing: -28, kind: 'mountain' },
+  { id: 'mcleodganj', name: 'McLeod Ganj', note: 'Monastery bells and momos.', day: 'Day 4', coord: [76.3388, 32.2425], zoom: 12.7, pitch: 58, bearing: 16, kind: 'mountain' },
+  { id: 'triund', name: 'Triund', note: 'Sunrise over the Dhauladhar. The summit.', day: 'Day 5', coord: [76.3667, 32.2741], zoom: 12.6, pitch: 56, bearing: -42, kind: 'summit' },
 ]
 
 export const DRIVE_END_INDEX = 185

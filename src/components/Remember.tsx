@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { Lock, Globe, Camera, Heart } from 'lucide-react'
+import { Lock, Globe, Camera, Heart, MapPin } from 'lucide-react'
 import PhoneFrame from './PhoneFrame'
 import { RevealWords, Reveal, EASE } from './Reveal'
 
@@ -46,13 +46,41 @@ function MemoryUI({ mode }: { mode: Mode }) {
         <span className="text-[12px] tabular-nums" style={{ color: '#b3bccb' }}>6:12 AM</span>
       </div>
 
-      {/* the user's own memory — the anchor photo */}
+      {/* scroll-driven pin-drop: a marker falls onto the exact summit spot,
+          ripples, then the photo memory unfurls from it. */}
       <motion.div
-        initial={{ scale: reduce ? 1 : 0.85, opacity: 0, y: reduce ? 0 : 12 }}
+        className="absolute left-1/2 top-[58px] -translate-x-1/2 z-20"
+        initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: -70 }}
+        whileInView={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={reduce ? { duration: 0.2 } : { type: 'spring', stiffness: 460, damping: 16, delay: 0.15 }}
+        aria-hidden="true"
+      >
+        <div className="relative grid place-items-center">
+          {!reduce && (
+            <motion.span
+              className="absolute rounded-full"
+              style={{ width: 20, height: 20, background: 'var(--color-amber-400)' }}
+              initial={{ scale: 0, opacity: 0.7 }}
+              whileInView={{ scale: [0, 3.2], opacity: [0.6, 0] }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.1, delay: 0.5, ease: 'easeOut' }}
+            />
+          )}
+          <span className="grid place-items-center w-8 h-8 rounded-full" style={{ background: 'var(--color-amber-500)', boxShadow: '0 6px 14px rgba(0,0,0,0.5)' }}>
+            <MapPin size={17} fill="#07090c" stroke="#07090c" />
+          </span>
+        </div>
+      </motion.div>
+
+      {/* the user's own memory — the anchor photo, unfurls from the pin */}
+      <motion.div
+        initial={reduce ? { scale: 1, opacity: 1 } : { scale: 0.6, opacity: 0, y: -6 }}
         whileInView={{ scale: 1, opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-        className="absolute top-[64px] left-1/2 -translate-x-1/2 w-[196px]"
+        transition={reduce ? { duration: 0.2 } : { duration: 0.6, delay: 0.72, ease: [0.34, 1.4, 0.64, 1] }}
+        style={{ transformOrigin: 'top center' }}
+        className="absolute top-[92px] left-1/2 -translate-x-1/2 w-[196px]"
       >
         <div
           className="rounded-2xl overflow-hidden"

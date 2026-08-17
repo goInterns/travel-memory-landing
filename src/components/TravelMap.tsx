@@ -98,9 +98,9 @@ const TravelMap = forwardRef<MapHandle, TravelMapProps>(function TravelMap(
       zoom: stop.zoom,
       pitch: stop.pitch,
       bearing: stop.bearing,
-      duration: 2600,
+      duration: 3000,
       essential: true,
-      curve: 1.4,
+      curve: 1.5,
     })
   }, [])
 
@@ -108,10 +108,10 @@ const TravelMap = forwardRef<MapHandle, TravelMapProps>(function TravelMap(
     const map = mapRef.current
     if (!map) return
     map.fitBounds(JOURNEY_BOUNDS as [LngLat, LngLat], {
-      padding: { top: 80, bottom: 80, left: 60, right: 60 },
-      pitch: 40,
-      bearing: -8,
-      duration: 2400,
+      padding: { top: 110, bottom: 140, left: 70, right: 70 },
+      pitch: 56,
+      bearing: -12,
+      duration: 2800,
     })
   }, [])
 
@@ -135,10 +135,26 @@ const TravelMap = forwardRef<MapHandle, TravelMapProps>(function TravelMap(
       interactive,
       maxZoom: 15,
       minZoom: 4,
+      maxPitch: 82,
     })
     mapRef.current = map
 
     map.on('load', () => {
+      // Atmospheric sky so a tilted horizon reads as sky, not black.
+      // NB: no aggressive fog — fog-ground-blend darkens the terrain toward black.
+      try {
+        map.setSky({
+          'sky-color': '#12283f',
+          'sky-horizon-blend': 0.7,
+          'horizon-color': '#4a6884',
+          'horizon-fog-blend': 0.5,
+          'fog-color': '#3a4a5c',
+          'fog-ground-blend': 0.02,
+        })
+      } catch {
+        // older maplibre without setSky — degrade silently to dark background
+      }
+
       // Full route (faint) + drawn progress (bright amber) + trek (dashed)
       map.addSource('route-full', {
         type: 'geojson',
